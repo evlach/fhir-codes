@@ -1,0 +1,307 @@
+h1. FHIR Codes API FHIR Codes API
+
+*Version:* 1.0.0
+
+----
+
+{toc:printable=true|style=square|minLevel=2|maxLevel=3|type=list|outline=false|include=.*}
+
+h2. Endpoints
+
+    h3. addCodeToValueSet
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /valueset/{url}
+    {code}
+    *Summary:* insert a code to the valueset
+    *Description:* 
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |url |ID of pet to update |(/) | |  |
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |concept |user to add to the system |(/) | |  |
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     successful operation
+        {code:title=Response Type}
+Concept
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "successful operation",
+  "schema" : {
+    "$ref" : "#/definitions/Concept"
+  }
+}
+        {code}
+        *Status Code:* 304
+        *Message:*     already exists
+        {code:title=Response Type}
+Concept
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "already exists",
+  "schema" : {
+    "$ref" : "#/definitions/Concept"
+  }
+}
+        {code}
+    ----
+
+    h3. getValueSet
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /valueset/{url}
+    {code}
+    *Summary:* get valueset
+    *Description:* Get valueset by id 
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |url |url of valueset |(/) | |  |
+
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     valueset
+        {code:title=Response Type}
+Object
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "valueset",
+  "schema" : {
+    "type" : "object",
+    "properties" : { }
+  }
+}
+        {code}
+        *Status Code:* 400
+        *Message:*     bad input parameter
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "bad input parameter"
+}
+        {code}
+    ----
+
+    h3. getValueSetCode
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /valueset/{url}/concept/{code}
+    {code}
+    *Summary:* get code from valueset
+    *Description:* Get concept 
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |url |url of valueset |(/) | |  |
+|code |url of valueset |(/) | |  |
+
+
+
+        h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |lang |language |(x) | |  |
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     valueset
+        {code:title=Response Type}
+Object
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "valueset",
+  "schema" : {
+    "type" : "object",
+    "properties" : { }
+  }
+}
+        {code}
+        *Status Code:* 400
+        *Message:*     bad input parameter
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "bad input parameter"
+}
+        {code}
+    ----
+
+    h3. getValueSetsList
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /valuesets
+    {code}
+    *Summary:* get list of all valuesets (list of urls)
+    *Description:* Get the full list of valuesets 
+
+
+    h4. Parameters
+
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     list of urls
+        {code:title=Response Type}
+array[ValueSet]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "list of urls",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/ValueSet"
+    }
+  }
+}
+        {code}
+        *Status Code:* 400
+        *Message:*     bad input parameter
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "bad input parameter"
+}
+        {code}
+    ----
+
+    h3. updateCodeToValueSet
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /valueset/{url}
+    {code}
+    *Summary:* update a code to the valueset
+    *Description:* 
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |url |ID of pet to update |(/) | |  |
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |concept |user to add to the system |(/) | |  |
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     successful operation
+        {code:title=Response Type}
+Concept
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "successful operation",
+  "schema" : {
+    "$ref" : "#/definitions/Concept"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     not found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "not found"
+}
+        {code}
+    ----
+
+h2. Models
+
+        h3. Concept
+        ||Field Name||Required||Type||Description||
+         |code | |String | |
+ |value | |Object | |
+ |display | |String | |
+ |system | |String | |
+        h3. ValueSet
+        ||Field Name||Required||Type||Description||
+         |url | |String | |
+ |concepts | |array[Concept] | |
